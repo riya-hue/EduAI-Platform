@@ -12,8 +12,13 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Serve static frontend files from public folder
+
+// Serve static frontend files (CSS, JS)
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Serve images from backend folder
+app.use('/images', express.static(__dirname));
+
 
 // Catch-all route to serve index.html for SPA
 app.get('*', (req, res) => {
